@@ -1,0 +1,47 @@
+function isHappy(n) {
+	let dictionary = {
+		"0": 0,
+		"1": 1,
+		"2": 4,
+		"3": 9,
+		"4": 16,
+		"5": 25,
+		"6": 36,
+		"7": 49,
+		"8": 64,
+		"9": 81
+	}
+	let set = new Set();
+
+	while(n > 1) {
+		let digits = n.toString();
+		let sum = 0;
+		
+		for(const c of digits) {
+			sum += dictionary[c];
+		}
+		
+		if(set.has(sum) || sum === 1)
+			return true;
+		set.add(sum);
+		n = sum;
+	}
+
+	return false;
+}
+
+// =========================
+// 🧪 TEST CASES
+// =========================
+
+function runTests() {
+  console.log("Running tests...");
+
+  const result1 = isHappy(101);
+  console.log("Test 1:", result1);
+
+  console.log("Done.");
+}
+
+// Run automatically on load
+runTests();
